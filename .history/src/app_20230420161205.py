@@ -82,14 +82,14 @@ if __name__ == '__main__':
     publisher =  ZmqPublisher()
 
     dateUtils = DateUtils()
-    #desiredDate = 'oct13.2022'
+    desiredDate = 'oct13.2022'
     nowDate = date.today()
     nowDateFormatted = dateUtils.getDateInCorrectFormat(date=nowDate)
 
     if (nowDateFormatted != ''):
         while True:
             driver = getDriver()
-            rows = scrape(date=nowDate, driver= driver)
+            rows = scrape(date=desiredDate, driver= driver)
             #send with zeromq
             message:dict = JsonUtils().convertListToJson(elements= rows)
             if rows:
