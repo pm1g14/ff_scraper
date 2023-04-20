@@ -1,9 +1,0 @@
-# created by virtualenv automatically
-*
-# ignore ALL .log files
-*.log
-applogs
-
-# ignore ALL files in ANY directory named temp
-temp/
-.history
