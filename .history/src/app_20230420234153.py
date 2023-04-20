@@ -82,7 +82,7 @@ if __name__ == '__main__':
     publisher =  ZmqPublisher()
 
     dateUtils = DateUtils()
-    #desiredDate = 'oct13.2022'
+    desiredDate = 'oct13.2022'
     nowDate = date.today()
     nowDateFormatted = dateUtils.getDateInCorrectFormat(date=nowDate)
 
