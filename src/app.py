@@ -1,13 +1,11 @@
-import random
 from selenium import webdriver
-from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from model import RowParameters
 from utils import NumUtils as util
 from utils import JsonUtils, DateUtils
-import sys, time, datetime
+import sys, time
 from datetime import date
 from publisher import ZmqPublisher
 
@@ -82,14 +80,14 @@ if __name__ == '__main__':
     publisher =  ZmqPublisher()
 
     dateUtils = DateUtils()
-    #desiredDate = 'oct13.2022'
+    desiredDate = 'oct13.2022'
     nowDate = date.today()
     nowDateFormatted = dateUtils.getDateInCorrectFormat(date=nowDate)
 
     if (nowDateFormatted != ''):
         while True:
             driver = getDriver()
-            rows = scrape(date=nowDate, driver= driver)
+            rows = scrape(date=desiredDate, driver= driver)
             #send with zeromq
             message:dict = JsonUtils().convertListToJson(elements= rows)
             if rows:
