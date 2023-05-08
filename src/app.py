@@ -22,6 +22,7 @@ def filterRows(rows: RowParameters, event:str, curr:str):
 def getDriver():
     chrome_options = Options()
     chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument("--headless")
     chrome_options.add_argument("--window-size=1920,1080")
     driver = webdriver.Chrome(options = chrome_options)
     return driver
@@ -39,7 +40,7 @@ if __name__ == '__main__':
     if (nowDateFormatted != ''):
         while True:
             driver = getDriver()
-            rows = ff_scraper.scrape(nowDateFormatted, driver)
+            rows = ff_scraper.scrape(desiredDate, driver)
             #send with zeromq
             message:dict = JsonUtils().convertListToJson(elements= rows)
             if rows:
